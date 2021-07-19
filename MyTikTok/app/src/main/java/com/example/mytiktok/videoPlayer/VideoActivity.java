@@ -4,6 +4,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -49,11 +50,12 @@ public class VideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
-        Uri uri = Uri.parse("https://www.bilibili.com/blackboard/html5mobileplayer.html?aid=546588609");
+        Uri uri = Uri.parse("http://8.136.101.204/v/%E9%A5%BA%E5%AD%90%E5%A5%BD%E5%A6%88%E5%A6%88.mp4");
         videoView = this.findViewById(R.id.videoView);
-        videoView.setVideoPath("https://www.bilibili.com/blackboard/html5mobileplayer.html?aid=546588609");
+        videoView.setVideoURI(uri);
         videoView.requestFocus();
-
+       // videoView.start();
+        Log.d("videoView", "abc");
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 
             @Override

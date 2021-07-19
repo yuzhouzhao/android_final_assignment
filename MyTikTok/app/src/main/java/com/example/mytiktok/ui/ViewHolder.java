@@ -73,7 +73,6 @@ public class ViewHolder extends RecyclerView.ViewHolder {
             e.printStackTrace();
         }
         return bitmap;
-
     }
 
 }

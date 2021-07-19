@@ -48,8 +48,8 @@ public class ListAdapter extends RecyclerView.Adapter<ViewHolder> {
         return videoList.size();
     }
 
-    public void setData(List<Video> videoList) {
-
+    public void setData(List<Video> videoLi) {
+        videoList.addAll(videoLi);
     }
 }
 
