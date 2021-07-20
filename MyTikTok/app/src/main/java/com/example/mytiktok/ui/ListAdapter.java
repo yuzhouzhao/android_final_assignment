@@ -49,7 +49,9 @@ public class ListAdapter extends RecyclerView.Adapter<ViewHolder> {
     }
 
     public void setData(List<Video> videoLi) {
-        videoList.addAll(videoLi);
+        for (int i = 0; i < videoLi.size(); i++) {
+            videoList.add(videoLi.get(i));
+        }
     }
 }
 

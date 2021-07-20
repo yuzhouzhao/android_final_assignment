@@ -55,7 +55,6 @@ public class VideoActivity extends AppCompatActivity {
         videoView.setVideoURI(uri);
         videoView.requestFocus();
        // videoView.start();
-        Log.d("videoView", "abc");
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 
             @Override
