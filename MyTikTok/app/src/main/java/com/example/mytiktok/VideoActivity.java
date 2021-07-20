@@ -1,5 +1,6 @@
 package com.example.mytiktok;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -47,7 +48,12 @@ public class VideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
-        Uri uri = Uri.parse("http://8.136.101.204/v/%E9%A5%BA%E5%AD%90%E5%A5%BD%E5%A6%88%E5%A6%88.mp4");
+        // 跳转过来接收到的url
+        Intent intent=new Intent();
+        String url=intent.getStringExtra("feedurl");
+
+        //Uri uri = Uri.parse("http://8.136.101.204/v/%E9%A5%BA%E5%AD%90%E5%A5%BD%E5%A6%88%E5%A6%88.mp4");
+        Uri uri = Uri.parse(url);
         videoView = this.findViewById(R.id.videoView);
         videoView.setVideoURI(uri);
         videoView.requestFocus();

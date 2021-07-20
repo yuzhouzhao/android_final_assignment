@@ -22,6 +22,8 @@ public class ListAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private final List<Video> videoList = new ArrayList<>();
 
+    private OnItemClickListener mCickListener;
+
     public void refresh(List<Video> newVideos) {
         videoList.clear();
         if (newVideos != null) {
@@ -30,14 +32,21 @@ public class ListAdapter extends RecyclerView.Adapter<ViewHolder> {
         notifyDataSetChanged();
     }
 
+    public List<Video> getVideoList(){
+        return this.videoList;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.video_item, parent, false);
-        return new ViewHolder(itemView);
+        return new ViewHolder(itemView,mCickListener);
     }
 
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mCickListener=listener;
+    }
     @Override
     public void onBindViewHolder(@NonNull  ViewHolder holder, int position) {
         holder.bind(videoList.get(position));

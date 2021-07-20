@@ -1,7 +1,9 @@
 package com.example.mytiktok;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,18 +19,23 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class ViewHolder extends RecyclerView.ViewHolder {
+public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private MyImageView imageView;
     private TextView nickName;
     private TextView likeCount;
 
+    private OnItemClickListener mListener;
 
-    public ViewHolder(@NonNull View itemView) {
+
+    public ViewHolder(@NonNull View itemView,OnItemClickListener listener) {
         super(itemView);
+        itemView.setOnClickListener(this);
         imageView = itemView.findViewById(R.id.image);
         nickName = itemView.findViewById(R.id.text_nickname);
         likeCount = itemView.findViewById(R.id.text_likecount);
+
+        mListener=listener;
     }
 
     public void bind(final Video video) {
@@ -38,7 +45,9 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         imageView.setImageURL(video.avatar);
         nickName.setText(video.nickName);
         likeCount.setText("点赞数：" + video.likeCount);
+
     }
+
 
     public static Bitmap getHttpBitmap(String url) {
         URL myFileURL;
@@ -66,5 +75,10 @@ public class ViewHolder extends RecyclerView.ViewHolder {
             e.printStackTrace();
         }
         return bitmap;
+    }
+
+    @Override
+    public void onClick(View v) {
+        mListener.onItemClick(v,getAdapterPosition());
     }
 }

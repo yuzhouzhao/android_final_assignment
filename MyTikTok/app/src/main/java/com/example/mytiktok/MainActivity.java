@@ -1,12 +1,14 @@
 package com.example.mytiktok;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.util.Log;
 
 import java.util.List;
 
@@ -33,6 +35,17 @@ public class MainActivity extends AppCompatActivity {
         );
         getData();
         recyclerView.setAdapter(listAdapter);
+        listAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                 Log.d("Main",""+position);
+                Intent intent=new Intent(MainActivity.this,VideoActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("feedurl",listAdapter.getVideoList().get(position).feedUrl);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
 
