@@ -20,34 +20,34 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListAdapter listAdapter=new ListAdapter();
+    private VideoListAdapter listAdapter = new VideoListAdapter();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-        RecyclerView recyclerView=findViewById(R.id.recycleVideo);
+        RecyclerView recyclerView = findViewById(R.id.recycleVideo);
         recyclerView.setLayoutManager(new LinearLayoutManager(
-                this,LinearLayoutManager.VERTICAL,false));
+                this, LinearLayoutManager.VERTICAL, false));
         recyclerView.addItemDecoration(
-                new DividerItemDecoration(this,DividerItemDecoration.VERTICAL)
+                new DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         );
         getData();
         recyclerView.setAdapter(listAdapter);
         listAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                 Log.d("Main",""+position);
-                Intent intent=new Intent(MainActivity.this,VideoActivity.class);
-                Bundle bundle=new Bundle();
-                bundle.putString("feedurl",listAdapter.getVideoList().get(position).feedUrl);
+                Log.d("Main", "" + position);
+                Intent intent = new Intent(MainActivity.this, VideoActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("feedurl", listAdapter.getVideoList().get(position).feedUrl);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
     }
-
 
     private void getData() {
         Retrofit retrofit = new Retrofit.Builder()

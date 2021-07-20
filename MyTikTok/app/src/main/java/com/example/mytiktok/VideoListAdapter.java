@@ -7,10 +7,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mytiktok.R;
-import com.example.mytiktok.Video;
-import com.example.mytiktok.ViewHolder;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +14,7 @@ import java.util.List;
  * 利用RecyclerView显示视频列表 (一页显示多个item)
  */
 
-public class ListAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class VideoListAdapter extends RecyclerView.Adapter<VideoListHolder> {
 
     private final List<Video> videoList = new ArrayList<>();
 
@@ -38,17 +34,17 @@ public class ListAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public VideoListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.video_item, parent, false);
-        return new ViewHolder(itemView,mCickListener);
+        return new VideoListHolder(itemView,mCickListener);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener){
         this.mCickListener=listener;
     }
     @Override
-    public void onBindViewHolder(@NonNull  ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull VideoListHolder holder, int position) {
         holder.bind(videoList.get(position));
     }
 

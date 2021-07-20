@@ -1,5 +1,6 @@
 package com.example.mytiktok;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,7 +20,9 @@ public class MyImageView extends androidx.appcompat.widget.AppCompatImageView {
     public static final int SERVER_ERROR = 3;
     //子线程不能操作UI，通过Handler设置图片
 
-    private Handler handler = new Handler() {
+    @SuppressLint("HandlerLeak")
+    private final Handler handler = new Handler() {
+        @SuppressLint("HandlerLeak")
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
@@ -37,16 +40,16 @@ public class MyImageView extends androidx.appcompat.widget.AppCompatImageView {
         }
     };
 
-    public MyImageView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
     public MyImageView(Context context) {
         super(context);
     }
 
     public MyImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
+    }
+
+    public MyImageView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
     }
 
     //设置网络图片
@@ -56,13 +59,9 @@ public class MyImageView extends androidx.appcompat.widget.AppCompatImageView {
             @Override
             public void run() {
                 try {
-                    //把传过来的路径转成URL
                     URL url = new URL(path);
-                    //获取连接
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    //使用GET方法访问网络
                     connection.setRequestMethod("GET");
-                    //超时时间为10秒
                     connection.setConnectTimeout(10000);
                     //获取返回码
                     int code = connection.getResponseCode();

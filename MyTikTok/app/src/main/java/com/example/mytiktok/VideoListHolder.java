@@ -1,25 +1,20 @@
 package com.example.mytiktok;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.mytiktok.R;
-import com.example.mytiktok.Video;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class VideoListHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private MyImageView imageView;
     private TextView nickName;
@@ -28,7 +23,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     private OnItemClickListener mListener;
 
 
-    public ViewHolder(@NonNull View itemView,OnItemClickListener listener) {
+    public VideoListHolder(@NonNull View itemView, OnItemClickListener listener) {
         super(itemView);
         itemView.setOnClickListener(this);
         imageView = itemView.findViewById(R.id.image);
@@ -40,12 +35,12 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
 
     public void bind(final Video video) {
         // 显示封面图片
-
-        //TODO
-        imageView.setImageURL(video.avatar);
+        imageView.setImageURL(video.thumbnails);
+        Log.d("123", video.thumbnails);
+        // 显示用户名
         nickName.setText(video.nickName);
+        // 显示点赞数
         likeCount.setText("点赞数：" + video.likeCount);
-
     }
 
 

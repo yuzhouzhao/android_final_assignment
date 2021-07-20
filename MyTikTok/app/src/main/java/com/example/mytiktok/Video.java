@@ -15,7 +15,8 @@ public class Video {
     public int likeCount;
     @SerializedName("avatar")
     public String avatar;
-
+    @SerializedName("thumbnails")
+    public String thumbnails;
 
     @Override
     public String toString() {
@@ -26,6 +27,8 @@ public class Video {
                 ", description='" + description + '\'' +
                 ", likeCount=" + likeCount +
                 ", avatar='" + avatar + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", thumbnails='" + thumbnails + '\'' +
                 '}';
     }
 }
