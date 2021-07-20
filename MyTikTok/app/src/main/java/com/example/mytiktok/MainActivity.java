@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.mytiktok.ui.ListAdapter;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         RecyclerView recyclerView=findViewById(R.id.recycleVideo);
         recyclerView.setLayoutManager(new LinearLayoutManager(
                 this,LinearLayoutManager.VERTICAL,false));
@@ -32,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         );
         getData();
         recyclerView.setAdapter(listAdapter);
-
     }
 
 

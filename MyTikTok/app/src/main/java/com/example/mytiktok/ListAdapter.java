@@ -1,4 +1,4 @@
-package com.example.mytiktok.ui;
+package com.example.mytiktok;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mytiktok.R;
 import com.example.mytiktok.Video;
-import com.example.mytiktok.VideoResponse;
+import com.example.mytiktok.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
