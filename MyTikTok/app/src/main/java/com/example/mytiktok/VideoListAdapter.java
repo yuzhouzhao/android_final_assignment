@@ -28,7 +28,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListHolder> {
         notifyDataSetChanged();
     }
 
-    public List<Video> getVideoList(){
+    public List<Video> getVideoList() {
         return this.videoList;
     }
 
@@ -37,12 +37,13 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListHolder> {
     public VideoListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.video_item, parent, false);
-        return new VideoListHolder(itemView,mCickListener);
+        return new VideoListHolder(itemView, mCickListener);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener){
-        this.mCickListener=listener;
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mCickListener = listener;
     }
+
     @Override
     public void onBindViewHolder(@NonNull VideoListHolder holder, int position) {
         holder.bind(videoList.get(position));
