@@ -18,6 +18,7 @@ public class VideoListHolder extends RecyclerView.ViewHolder implements View.OnC
 
     private MyImageView imageView;
     private TextView nickName;
+    private MyImageView avator;
     private TextView likeCount;
     private TextView description;
 
@@ -29,6 +30,7 @@ public class VideoListHolder extends RecyclerView.ViewHolder implements View.OnC
         itemView.setOnClickListener(this);
         imageView = itemView.findViewById(R.id.image);
         nickName = itemView.findViewById(R.id.text_nickname);
+        avator=itemView.findViewById(R.id.avator);
         likeCount = itemView.findViewById(R.id.text_likecount);
         description=itemView.findViewById(R.id.description);
 
@@ -38,6 +40,7 @@ public class VideoListHolder extends RecyclerView.ViewHolder implements View.OnC
     public void bind(final Video video) {
         imageView.setImageURL(video.thumbnails);
         nickName.setText("@" + video.nickName);
+        avator.setImageURL(video.avatar);
         likeCount.setText(String.valueOf(video.likeCount));
         description.setText(video.description);
     }
